@@ -8,5 +8,10 @@
     public int MaxReps { get; set; }
     public string TargetArea { get; set; }
     public string MuscleGroup {  get; set; }
+
+    public Exercises(string name)
+    {
+      Name = name;
+    }
   }
 }
