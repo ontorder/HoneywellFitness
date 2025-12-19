@@ -9,9 +9,11 @@
     public string TargetArea { get; set; }
     public string MuscleGroup {  get; set; }
 
-    public Exercises(string name)
+    public Exercises(string name, int maxWeightKG, string targetArea)
     {
       Name = name;
+      MaxWeightKG = maxWeightKG;
+      TargetArea = targetArea;
     }
   }
 }
