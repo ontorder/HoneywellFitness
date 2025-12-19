@@ -2,7 +2,7 @@
 {
   internal class ExercisesManager
   {
-    List<Exercises> exercises = new List<Exercises>();
+    readonly List<Exercises> exercises = new List<Exercises>();
 
     public void AddExercise()
     {
