@@ -1,8 +1,8 @@
 ﻿namespace HoneywellFitness
 {
   internal class ExercisesManager
-  {
-    readonly List<Exercises> exercises = new List<Exercises>();
+  { 
+    private readonly List<Exercises> _exercises = new List<Exercises>();
 
     public void AddExercise()
     {
@@ -15,15 +15,15 @@
       Console.Write("Enter the target area (Arms, Chest, Legs, etc): ");
       string targetArea = Console.ReadLine();
 
-      exercises.Add(new Exercises(name, maxWeightKg, targetArea));
+      _exercises.Add(new Exercises(name, maxWeightKg, targetArea));
     }
 
     public void ListExercises()
     {
-      if(exercises.Count > 0)
+      if(_exercises.Count > 0)
       {
         Console.WriteLine("The database contains the following exercises: ");
-        foreach (var exercise in exercises)
+        foreach (var exercise in _exercises)
         {
           Console.WriteLine($"Name: {exercise.Name} | Max Weight (Kg): {exercise.MaxWeightKG} | Target Area: {exercise.TargetArea}.");
         }
