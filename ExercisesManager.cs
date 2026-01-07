@@ -10,7 +10,14 @@
       string name = Console.ReadLine();
 
       Console.Write("Enter the maximum weight used (kg): ");
-      int maxWeightKg = int.Parse(Console.ReadLine());
+      string maxWeightKgString = Console.ReadLine();
+      int maxWeightKg = 0;
+      while (!int.TryParse(maxWeightKgString, out maxWeightKg))
+      {
+        Console.WriteLine("Error - Invalid Input! Input must be a whole number.");
+        Console.Write("Enter the maximum weight used (kg): ");
+        maxWeightKgString = Console.ReadLine();
+      }
 
       Console.Write("Enter the target area (Arms, Chest, Legs, etc): ");
       string targetArea = Console.ReadLine();
