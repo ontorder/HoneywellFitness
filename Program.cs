@@ -15,6 +15,12 @@
 
       do
       {
+        while (!isValidInput)
+        {
+          Console.Write("Invalid input - please enter a value from the main options: ");
+          isValidInput = int.TryParse(Console.ReadLine(), out choice);
+        }
+
         switch(choice)
         {
           case 1:
