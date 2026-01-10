@@ -9,6 +9,7 @@
       Console.WriteLine("Pick from the following options below. ");
       Console.WriteLine("1. Add New Exercise");
       Console.WriteLine("2. View Exercises in Database");
+      Console.WriteLine("3. Edit a Exercise");
       Console.WriteLine("0. Quit Application");
       Console.Write("Choice: ");
       bool isValidInput = int.TryParse(Console.ReadLine(), out int choice);
@@ -36,6 +37,13 @@
             // Show the list of exercises within the database/list
             Console.WriteLine("Test Show Exercises.");
             exerciseManager.ListExercises();
+
+            Console.WriteLine("Option: ");
+            isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            break;
+
+          case 3:
+            exerciseManager.EditExercise();
 
             Console.WriteLine("Option: ");
             isValidInput = int.TryParse(Console.ReadLine(), out choice);
