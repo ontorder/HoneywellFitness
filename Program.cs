@@ -12,14 +12,14 @@
       Console.WriteLine("3. Edit a Exercise");
       Console.WriteLine("0. Quit Application");
       Console.Write("Choice: ");
-      bool isValidInput = int.TryParse(Console.ReadLine(), out int choice);
+      bool isInputValid = int.TryParse(Console.ReadLine(), out int choice);
 
       do
       {
-        while (!isValidInput)
+        while (!isInputValid)
         {
           Console.Write("Invalid input - please enter a value from the main options: ");
-          isValidInput = int.TryParse(Console.ReadLine(), out choice);
+          isInputValid = int.TryParse(Console.ReadLine(), out choice);
         }
 
         switch(choice)
@@ -30,7 +30,7 @@
             exerciseManager.AddExercise();
 
             Console.Write("Option: ");
-            isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            isInputValid = int.TryParse(Console.ReadLine(), out choice);
             break;
 
           case 2:
@@ -39,20 +39,20 @@
             exerciseManager.ListExercises();
 
             Console.WriteLine("Option: ");
-            isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            isInputValid = int.TryParse(Console.ReadLine(), out choice);
             break;
 
           case 3:
             exerciseManager.EditExercise();
 
             Console.WriteLine("Option: ");
-            isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            isInputValid = int.TryParse(Console.ReadLine(), out choice);
             break;
 
           default:
             Console.WriteLine("Invalid input - please choose from the options listed.");
             Console.Write("Option: ");
-            isValidInput = int.TryParse(Console.ReadLine(), out choice);
+            isInputValid = int.TryParse(Console.ReadLine(), out choice);
             break;
         }
       } while (choice != 0);
