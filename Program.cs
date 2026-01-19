@@ -31,6 +31,11 @@
 
             Console.Write("Option: ");
             isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            while (!isInputValid)
+            {
+              Console.Write("Invalid input - please enter a value from the main options: ");
+              isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            }
             break;
 
           case 2:
@@ -40,6 +45,11 @@
 
             Console.WriteLine("Option: ");
             isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            while (!isInputValid)
+            {
+              Console.Write("Invalid input - please enter a value from the main options: ");
+              isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            }
             break;
 
           case 3:
@@ -47,12 +57,22 @@
 
             Console.WriteLine("Option: ");
             isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            while (!isInputValid)
+            {
+              Console.Write("Invalid input - please enter a value from the main options: ");
+              isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            }
             break;
 
           default:
             Console.WriteLine("Invalid input - please choose from the options listed.");
             Console.Write("Option: ");
             isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            while (!isInputValid)
+            {
+              Console.Write("Invalid input - please enter a value from the main options: ");
+              isInputValid = int.TryParse(Console.ReadLine(), out choice);
+            }
             break;
         }
       } while (choice != 0);
