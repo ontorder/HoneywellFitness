@@ -1,4 +1,6 @@
-﻿namespace HoneywellFitness
+﻿using HoneywellFitness.Utils;
+
+namespace HoneywellFitness
 {
   internal class Program
   {
@@ -12,67 +14,44 @@
       Console.WriteLine("3. Edit a Exercise");
       Console.WriteLine("0. Quit Application");
       Console.Write("Choice: ");
-      bool isInputValid = int.TryParse(Console.ReadLine(), out int choice);
+      string userInput = Console.ReadLine();
+      int choice = InputValidator.IsInputValid(userInput);
 
       do
       {
-        while (!isInputValid)
-        {
-          Console.Write("Invalid input - please enter a value from the main options: ");
-          isInputValid = int.TryParse(Console.ReadLine(), out choice);
-        }
-
         switch(choice)
         {
           case 1:
             // Add Exercise
-            Console.WriteLine("Test Add Exercise.");
             exerciseManager.AddExercise();
 
             Console.Write("Option: ");
-            isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            while (!isInputValid)
-            {
-              Console.Write("Invalid input - please enter a value from the main options: ");
-              isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            }
+            userInput = Console.ReadLine();
+            choice = InputValidator.IsInputValid(userInput);
             break;
 
           case 2:
             // Show the list of exercises within the database/list
-            Console.WriteLine("Test Show Exercises.");
             exerciseManager.ListExercises();
 
-            Console.WriteLine("Option: ");
-            isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            while (!isInputValid)
-            {
-              Console.Write("Invalid input - please enter a value from the main options: ");
-              isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            }
+            Console.Write("Option: ");
+            userInput = Console.ReadLine();
+            choice = InputValidator.IsInputValid(userInput);
             break;
 
           case 3:
             exerciseManager.EditExercise();
 
-            Console.WriteLine("Option: ");
-            isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            while (!isInputValid)
-            {
-              Console.Write("Invalid input - please enter a value from the main options: ");
-              isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            }
+            Console.Write("Option: ");
+            userInput = Console.ReadLine();
+            choice = InputValidator.IsInputValid(userInput);
             break;
 
           default:
             Console.WriteLine("Invalid input - please choose from the options listed.");
             Console.Write("Option: ");
-            isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            while (!isInputValid)
-            {
-              Console.Write("Invalid input - please enter a value from the main options: ");
-              isInputValid = int.TryParse(Console.ReadLine(), out choice);
-            }
+            userInput = Console.ReadLine();
+            choice = InputValidator.IsInputValid(userInput);
             break;
         }
       } while (choice != 0);
