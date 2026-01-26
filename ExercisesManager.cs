@@ -11,8 +11,8 @@
 
       Console.Write("Enter the maximum weight used (kg): ");
       string maxWeightKgString = Console.ReadLine();
-      int maxWeightKg = 0;
-      while (!int.TryParse(maxWeightKgString, out maxWeightKg))
+      float maxWeightKg = 0;
+      while (!float.TryParse(maxWeightKgString, out maxWeightKg))
       {
         Console.WriteLine("Error - Invalid Input! Input must be a whole number.");
         Console.Write("Enter the maximum weight used (kg): ");
@@ -78,10 +78,10 @@
 
       Console.Write("Enter the maximum weight used (kg): ");
       string maxWeightKgString = Console.ReadLine();
-      int maxWeightKg = 0;
-      while (!int.TryParse(maxWeightKgString, out maxWeightKg))
+      float maxWeightKg = 0;
+      while (!float.TryParse(maxWeightKgString, out maxWeightKg))
       {
-        Console.WriteLine("Error - Invalid Input! Input must be a whole number.");
+        Console.WriteLine("Error - Invalid Input! Please enter a valid number.");
         Console.Write("Enter the maximum weight used (kg): ");
         maxWeightKgString = Console.ReadLine();
       }
