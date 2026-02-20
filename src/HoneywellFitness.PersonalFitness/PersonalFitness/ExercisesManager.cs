@@ -1,4 +1,4 @@
-﻿namespace HoneywellFitness;
+﻿namespace HoneywellFitness.PersonalFitness;
 
 internal sealed class ExercisesManager
 {
@@ -22,7 +22,7 @@ internal sealed class ExercisesManager
         Console.Write("Enter the target area (Arms, Chest, Legs, etc): ");
         string targetArea = Console.ReadLine();
 
-        _exercises.Add(new Exercises(name, maxWeightKg, targetArea));
+        _exercises.Add(new Exercises { Exercise = name, MaxWeightKg = maxWeightKg, TargetArea = targetArea });
     }
 
     public void ListExercises()
@@ -32,7 +32,7 @@ internal sealed class ExercisesManager
             Console.WriteLine("The database contains the following exercises: ");
             foreach (var exercise in _exercises)
             {
-                Console.WriteLine($"Name: {exercise.Name} | Max Weight (Kg): {exercise.MaxWeightKG} | Target Area: {exercise.TargetArea}.");
+                Console.WriteLine($"Name: {exercise.Exercise} | Max Weight (Kg): {exercise.MaxWeightKg} | Target Area: {exercise.TargetArea}.");
             }
         }
         else
@@ -50,7 +50,7 @@ internal sealed class ExercisesManager
         int count = 0;
         foreach (var exercise in _exercises)
         {
-            Console.WriteLine($"[Index Num: {count}]. Name: {exercise.Name} | Max Weight (Kg): {exercise.MaxWeightKG} | Target Area: {exercise.TargetArea}.");
+            Console.WriteLine($"[Index Num: {count}]. Name: {exercise.Exercise} | Max Weight (Kg): {exercise.MaxWeightKg} | Target Area: {exercise.TargetArea}.");
             count++;
         }
 
@@ -67,13 +67,13 @@ internal sealed class ExercisesManager
         Console.WriteLine($"=== Editing Exercise  ===");
         Console.WriteLine($"=== Exercise Information ===");
         Console.WriteLine($"\tIndex Number: {indexNum}");
-        Console.WriteLine($"\tName: {_exercises[indexNum].Name}");
-        Console.WriteLine($"\tMax Weight (kg): {_exercises[indexNum].MaxWeightKG}");
+        Console.WriteLine($"\tName: {_exercises[indexNum].Exercise}");
+        Console.WriteLine($"\tMax Weight (kg): {_exercises[indexNum].MaxWeightKg}");
         Console.WriteLine($"\tTarget Area: {_exercises[indexNum].TargetArea}");
 
         Console.Write("Enter a name for a exercise: ");
         string name = Console.ReadLine();
-        _exercises[indexNum].Name = name;
+        _exercises[indexNum].Exercise = name;
 
         Console.Write("Enter the maximum weight used (kg): ");
         string maxWeightKgString = Console.ReadLine();
@@ -84,7 +84,7 @@ internal sealed class ExercisesManager
             Console.Write("Enter the maximum weight used (kg): ");
             maxWeightKgString = Console.ReadLine();
         }
-        _exercises[indexNum].MaxWeightKG = maxWeightKg;
+        _exercises[indexNum].MaxWeightKg = maxWeightKg;
 
         Console.Write("Enter the target area (Arms, Chest, Legs, etc): ");
         string targetArea = Console.ReadLine();

@@ -1,6 +1,6 @@
 ﻿using HoneywellFitness.Utils;
 
-namespace HoneywellFitness;
+namespace HoneywellFitness.PersonalFitness;
 
 internal sealed class Program
 {
