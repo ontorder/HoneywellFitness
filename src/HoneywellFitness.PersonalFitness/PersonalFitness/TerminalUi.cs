@@ -42,7 +42,7 @@ internal sealed class TerminalUi
             maxWeightKgString = Console.ReadLine()!.Trim();
         }
 
-        var add = new CreateExercise(name, muscleGroup, reps: 0, sets: 0, maxWeightKg);
+        var add = new CreateExercise(name, muscleGroup, reps: null, maxWeightKg);
         // UNDONE
     }
 
@@ -87,14 +87,13 @@ internal sealed class TerminalUi
         }
 
         // UNDONE get from repo
-        var selectedExercise = new Exercise(default, default, default, default, default, default);
+        var selectedExercise = new Exercise(default, default, default, default, default, default, default);
 
         Console.WriteLine($"=== Editing Exercise  ===");
         Console.WriteLine($"=== Exercise Information ===");
         Console.WriteLine($"\tId: {selectedExerciseId}");
         Console.WriteLine($"\tName: {selectedExercise.ExerciseName}");
-        Console.WriteLine($"\tMax Weight (kg): {selectedExercise.WeightKg}");
-        Console.WriteLine($"\tSets: {selectedExercise.Sets}");
+        //Console.WriteLine($"\tMax Weight (kg): {selectedExercise.WeightKg}");
         Console.WriteLine($"\tReps: {selectedExercise.Reps}");
 
         Console.Write("Enter a name for a exercise: ");
@@ -110,7 +109,7 @@ internal sealed class TerminalUi
             weightKgString = Console.ReadLine();
         }
 
-        var upd = new UpdateExercise(name, default, default, default, weightKg);
+        var upd = new UpdateExercise(name, default, default, weightKg);
         // UNDONE
     }
 }

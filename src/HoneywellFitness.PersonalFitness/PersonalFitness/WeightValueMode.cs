@@ -3,5 +3,5 @@
 public enum WeightValueMode
 {
     Absolute,
-    Percent
+    Percent,
 }

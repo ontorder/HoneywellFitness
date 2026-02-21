@@ -1,11 +1,19 @@
 ﻿namespace HoneywellFitness.PersonalFitness;
 
-public sealed class Exercise(int exerciseId, string exerciseName, string muscleGroup, int reps, int sets, float weightKg)
+public sealed class Exercise(
+    int exerciseId,
+    string exerciseName,
+    ExerciseImportance importance,
+    string muscleGroup,
+    RepetitionsMode repetitionsMode,
+    IRepetitions reps,
+    bool wasLastExerciseFinished)
 {
     public int ExerciseId = exerciseId;
     public string ExerciseName = exerciseName;
+    public ExerciseImportance Importance = importance;
     public string MuscleGroup = muscleGroup;
-    public int Reps = reps;
-    public int Sets = sets;
-    public float WeightKg = weightKg;
+    public RepetitionsMode RepetitionsMode = repetitionsMode;
+    public IRepetitions Reps = reps;
+    public bool WasLastExerciseFinished = wasLastExerciseFinished;
 }

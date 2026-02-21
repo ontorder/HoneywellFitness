@@ -3,6 +3,7 @@
 public sealed class PersonalFitnessApplication
 {
     private readonly ExercisesMemoryRepository _exerciseRepo = new();
+    private readonly ExerciseRepositorySeeder _seeder = new();
     private readonly TerminalUi _ui = new();
 
     public PersonalFitnessApplication() { }
