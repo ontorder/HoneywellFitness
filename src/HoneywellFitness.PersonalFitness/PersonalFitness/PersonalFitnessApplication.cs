@@ -1,7 +1,10 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿using HoneywellFitness.TextUi;
+
+namespace HoneywellFitness.PersonalFitness;
 
 public sealed class PersonalFitnessApplication
 {
+    private readonly ConsoleReader _consoleReader = new();
     private readonly ExercisesMemoryRepository _exerciseRepo = new();
     private readonly ExerciseRepositorySeeder _seeder = new();
     private readonly TerminalUi _ui = new();
@@ -10,6 +13,9 @@ public sealed class PersonalFitnessApplication
 
     public void WaitUntilQuit()
     {
+        _consoleReader.Init();
+        _ui.Init();
+
         var choice = _ui.MainAskChoice();
 
         do

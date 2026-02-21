@@ -2,6 +2,15 @@
 
 internal sealed class TerminalUi
 {
+    private object _state = new();
+
+    public TerminalUi() { }
+
+    public void Init()
+    {
+
+    }
+
     public object MainAskChoice()
     {
         Console.WriteLine("Honeywell Fitness Tracker.");
