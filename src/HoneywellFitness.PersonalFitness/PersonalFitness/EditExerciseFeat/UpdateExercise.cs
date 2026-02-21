@@ -1,4 +1,6 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿using HoneywellFitness.PersonalFitness.Model;
+
+namespace HoneywellFitness.PersonalFitness.EditExerciseFeat;
 
 public sealed class UpdateExercise(string exerciseName, string muscleGroup, IRepetitions reps, float weightKg)
 {

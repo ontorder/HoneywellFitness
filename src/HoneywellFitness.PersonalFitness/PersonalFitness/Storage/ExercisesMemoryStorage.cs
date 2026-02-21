@@ -1,6 +1,10 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿using HoneywellFitness.PersonalFitness.AddExerciseFeat;
+using HoneywellFitness.PersonalFitness.EditExerciseFeat;
+using HoneywellFitness.PersonalFitness.Model;
 
-public sealed class ExercisesMemoryRepository
+namespace HoneywellFitness.PersonalFitness.Storage;
+
+public sealed class ExercisesMemoryStorage
 {
     private readonly List<Exercise> _exercises = [];
     private int _autoincId = 0;
@@ -17,6 +21,12 @@ public sealed class ExercisesMemoryRepository
 
     public Exercise[] GetExercises()
         => [.. _exercises];
+
+    public void Seed(Exercise[] seed)
+    {
+        _exercises.Clear();
+        _exercises.AddRange(seed);
+    }
 
     public void UpdateExercise(int exerciseId, UpdateExercise update)
     {

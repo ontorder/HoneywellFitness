@@ -1,4 +1,4 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿namespace HoneywellFitness.PersonalFitness.EditExerciseFeat;
 
 public sealed class ExerciseForEdit(int exerciseId, string exerciseName, string muscleGroup)
 {

@@ -1,6 +1,6 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿namespace HoneywellFitness.PersonalFitness.ViewExerciseFeat;
 
-public sealed class ViewExercise(string exerciseName, string muscleGroup, int reps, int sets, float weightKg)
+public sealed class ViewExerciseModel(string exerciseName, string muscleGroup, int reps, int sets, float weightKg)
 {
     public string ExerciseName = exerciseName;
     public string MuscleGroup = muscleGroup;

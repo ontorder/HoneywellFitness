@@ -1,51 +1,27 @@
-﻿using HoneywellFitness.TextUi;
+﻿using HoneywellFitness.PersonalFitness.Storage;
+using HoneywellFitness.TextUi;
 
 namespace HoneywellFitness.PersonalFitness;
 
 public sealed class PersonalFitnessApplication
 {
     private readonly ConsoleReader _consoleReader = new();
-    private readonly ExercisesMemoryRepository _exerciseRepo = new();
+    private readonly ExercisesMemoryStorage _exerciseStorage = new();
     private readonly ExerciseRepositorySeeder _seeder = new();
-    private readonly TerminalUi _ui = new();
+    private readonly TuiThingy.TerminalUi _tui = new();
 
-    public PersonalFitnessApplication() { }
-
-    public void WaitUntilQuit()
+    public void ApplicationMessageLoop()
     {
         _consoleReader.Init();
-        _ui.Init();
+        _tui.Init();
 
-        var choice = _ui.MainAskChoice();
+        _exerciseStorage.Seed(_seeder.TempExercises);
 
-        do
-        {
-            switch (choice)
-            {
-                case 'a':
-                    _ui.AddExercise();
+        _tui.MainAskChoice();
 
-                    Console.Write("Option: ");
-                    break;
-
-                case 'v':
-                    _ui.ListExercises();
-
-                    Console.Write("Option: ");
-                    break;
-
-                case 'e':
-                    _ui.EditExercise();
-
-                    Console.Write("Option: ");
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid input - please choose from the options listed.");
-                    Console.Write("Option: ");
-                    break;
-            }
-        }
-        while (choice != new { TODO = true });
+        _ = _consoleReader.ReadInput();
+        _tui.AddExercise();
+        _tui.ListExercises();
+        _tui.EditExercise();
     }
 }

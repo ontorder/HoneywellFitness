@@ -1,4 +1,4 @@
-﻿namespace HoneywellFitness.PersonalFitness;
+﻿namespace HoneywellFitness.PersonalFitness.Model;
 
 public enum ExerciseImportance
 {
