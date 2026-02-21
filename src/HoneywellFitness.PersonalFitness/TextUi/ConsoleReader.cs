@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32.SafeHandles;
-using static HoneywellFitness.TextUi.LocalExt;
 
 namespace HoneywellFitness.TextUi;
 
@@ -17,6 +16,12 @@ public sealed class ConsoleReader
             CONSOLE_MODE.ENABLE_PROCESSED_INPUT | CONSOLE_MODE.ENABLE_VIRTUAL_TERMINAL_INPUT | CONSOLE_MODE.ENABLE_WINDOW_INPUT);
         if (scmSucc == false) throw new Exception("setconsolemode failed");
     }
+
+    public int GetWidth()
+        => Console.WindowWidth;
+
+    public int GetHeight()
+        => Console.WindowHeight;
 
     public StdinValue ReadInput()
     {
@@ -36,15 +41,15 @@ public sealed class ConsoleReader
                             state = ReadState.VtEscape;
                             break;
                         }
-                        return new(default, isMeta: true, ConsoleKey.Escape);
+                        return new(default, isErr: false, ConsoleKey.Escape);
                     }
 
                     return kp.KeyChar switch
                     {
-                        '\r' => new StdinValue(kp.KeyChar, isMeta: true, ConsoleKey.Enter),
-                        ' ' => new StdinValue(kp.KeyChar, isMeta: true, ConsoleKey.Spacebar),
-                        '\n' => new StdinValue(kp.KeyChar, isMeta: true, ConsoleKey.Enter),
-                        _ => new StdinValue(kp.KeyChar, isMeta: false, default)
+                        '\r' => new StdinValue(kp.KeyChar, isErr: false, ConsoleKey.Enter),
+                        ' ' => new StdinValue(kp.KeyChar, isErr: false, ConsoleKey.Spacebar),
+                        '\n' => new StdinValue(kp.KeyChar, isErr: false, ConsoleKey.Enter),
+                        _ => new StdinValue(kp.KeyChar, isErr: false, default)
                     };
 
                 case ReadState.VtEscape:
@@ -58,15 +63,15 @@ public sealed class ConsoleReader
                 case ReadState.VtBracket:
                     (state, parsed) = kp.KeyChar switch
                     {
-                        '5' => (ReadState._3CharSequence, new(default, isMeta: true, ConsoleKey.PageUp)),
-                        '6' => (ReadState._3CharSequence, new(default, isMeta: true, ConsoleKey.PageDown)),
-                        'A' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.UpArrow)),
-                        'B' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.DownArrow)),
-                        'C' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.RightArrow)),
-                        'D' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.LeftArrow)),
-                        'F' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.End)),
-                        'H' => (ReadState.Initial, new StdinValue(default, isMeta: true, ConsoleKey.Home)),
-                        _ => ThrowHelper<(ReadState, StdinValue?)>(),
+                        '5' => (ReadState._3CharSequence, new(default, isErr: false, ConsoleKey.PageUp)),
+                        '6' => (ReadState._3CharSequence, new(default, isErr: false, ConsoleKey.PageDown)),
+                        'A' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.UpArrow)),
+                        'B' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.DownArrow)),
+                        'C' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.RightArrow)),
+                        'D' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.LeftArrow)),
+                        'F' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.End)),
+                        'H' => (ReadState.Initial, new StdinValue(default, isErr: false, ConsoleKey.Home)),
+                        _ => (ReadState.Initial, new StdinValue(default, isErr: true, default)),
                     };
                     break;
 
@@ -75,7 +80,7 @@ public sealed class ConsoleReader
                     switch (kp.KeyChar)
                     {
                         case '~': break;
-                        default: ThrowHelper<(ReadState, StdinValue?)>(); break;
+                        default: return new StdinValue(default, isErr: true, default);
                     }
                     break;
             }

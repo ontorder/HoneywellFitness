@@ -2,38 +2,23 @@
 
 public sealed class ConsoleWriter
 {
-    private int _cursorX = 0;
-    private int _cursorY = 0;
+    private int _maxX = 49;
+    private int _minX = 0;
+    private int _maxY = 79;
+    private int _minY = 0;
 
-    private const int MaxX = 50;
-    private const int MinX = 0;
-    private const int MaxY = 80;
-    private const int MinY = 0;
-
-    public void Down()
+    public void Init(int width, int height)
     {
-        if (_cursorY == MaxY) return;
-        Console.Write($"{Vt100.AbsolutePosition(_cursorX, _cursorY)}");
-        ++_cursorY;
+        _maxX = width - 1;
+        _maxY = height - 1;
     }
 
-    public void Up()
+    public void SetPos(int x, int y)
     {
-        if (_cursorY == MaxY) return;
-        Console.Write($"{Vt100.AbsolutePosition(_cursorX, _cursorY)}");
-    }
-
-    public void Set()
-    {
-        Console.Write($"{Vt100.AbsolutePosition(_cursorX, _cursorY)}");
-    }
-
-    public void Left()
-    {
-    }
-
-    public void RIght()
-    {
-
+        if (x > _maxX) x = _maxX;
+        if (y > _maxY) y = _maxY;
+        if (x < _minX) x = _minX;
+        if (y < _minY) y = _minY;
+        Console.Write(Vt100.AbsolutePosition(x, y));
     }
 }

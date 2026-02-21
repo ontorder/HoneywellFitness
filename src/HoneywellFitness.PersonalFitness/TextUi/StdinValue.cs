@@ -1,9 +1,9 @@
 ﻿namespace HoneywellFitness.TextUi;
 
-public readonly struct StdinValue(char input, bool isMeta, ConsoleKey meta)
+public readonly struct StdinValue(char input, bool isErr, ConsoleKey meta)
 {
-    public char Input { get; } = input;
-    public bool IsMeta { get; } = isMeta;
-    public ConsoleKey Meta { get; } = meta;
+    public readonly char Input = input;
+    public readonly bool IsErr = isErr;
+    public readonly ConsoleKey Meta = meta;
 }
 

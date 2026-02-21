@@ -2,15 +2,14 @@
 
 public sealed class TerminalUi
 {
-    private object _coords = new();
     private TuiContext _currentContext = TuiContext.MainMenu;
     private readonly PersonalFitness.Storage.ExercisesMemoryStorage _exerciseStorage;
     private readonly PersonalFitness.MainMenuFeat.MainMenuTui _mainMenu;
 
-    public TerminalUi(PersonalFitness.Storage.ExercisesMemoryStorage exerciseStorage)
+    public TerminalUi(PersonalFitness.Storage.ExercisesMemoryStorage exerciseStorage, ConsoleWriter cw)
     {
         _exerciseStorage = exerciseStorage;
-        _mainMenu = new PersonalFitness.MainMenuFeat.MainMenuTui();
+        _mainMenu = new PersonalFitness.MainMenuFeat.MainMenuTui(cw);
     }
 
     public bool HandleNextInput(StdinValue input)
