@@ -9,11 +9,11 @@ public sealed class ConsoleReader
 
     public void Init()
     {
-        _consoleHandle = Windows.Win32.PInvoke.GetStdHandle_SafeHandle(STD_HANDLE.STD_INPUT_HANDLE);
-
+        // TODO this should probably be managed from tui
         Console.CursorVisible = false;
-        var consoleHandle = Windows.Win32.PInvoke.GetStdHandle_SafeHandle(STD_HANDLE.STD_INPUT_HANDLE);
-        var scmSucc = Windows.Win32.PInvoke.SetConsoleMode(consoleHandle, CONSOLE_MODE.ENABLE_INSERT_MODE |
+
+        _consoleHandle = Windows.Win32.PInvoke.GetStdHandle_SafeHandle(STD_HANDLE.STD_INPUT_HANDLE);
+        var scmSucc = Windows.Win32.PInvoke.SetConsoleMode(_consoleHandle, CONSOLE_MODE.ENABLE_INSERT_MODE |
             CONSOLE_MODE.ENABLE_PROCESSED_INPUT | CONSOLE_MODE.ENABLE_VIRTUAL_TERMINAL_INPUT | CONSOLE_MODE.ENABLE_WINDOW_INPUT);
         if (scmSucc == false) throw new Exception("setconsolemode failed");
     }

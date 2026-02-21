@@ -5,7 +5,11 @@ public sealed class MainMenuTui
     public void Activate()
     {
         Print();
+    }
 
+    public bool HandleNextInput(StdinValue input)
+    {
+        return true;
     }
 
     private void Print()
