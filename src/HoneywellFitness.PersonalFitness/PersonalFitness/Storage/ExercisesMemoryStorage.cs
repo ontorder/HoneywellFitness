@@ -4,6 +4,8 @@ namespace HoneywellFitness.PersonalFitness.Storage;
 
 public sealed class ExercisesMemoryStorage
 {
+    public ICollection<Exercise> Exercises => _exercises;
+
     private readonly List<Exercise> _exercises = [];
     private int _autoincId = 0;
 
@@ -17,9 +19,6 @@ public sealed class ExercisesMemoryStorage
             newExercise.Reps,
             newExercise.TrainOnDay,
             wasLastExerciseFinished: false));
-
-    public Exercise[] GetExercises()
-        => [.. _exercises];
 
     public void Seed(Exercise[] seed)
     {

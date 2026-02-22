@@ -1,6 +1,4 @@
-﻿using HoneywellFitness.PersonalFitness.Model;
-
-namespace HoneywellFitness.PersonalFitness;
+﻿namespace HoneywellFitness.PersonalFitness.Model;
 
 public sealed class OneRepSetRepetition(int reps, int sets, float weightKg, WeightValueMode weightValueMode) : IRepetitions
 {

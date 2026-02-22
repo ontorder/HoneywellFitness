@@ -2,6 +2,9 @@
 
 public sealed class ConsoleWriter
 {
+    public int MaxX => _maxX;
+    public int MaxY => _maxY;
+
     private int _maxX = 49;
     private int _minX = 0;
     private int _maxY = 79;

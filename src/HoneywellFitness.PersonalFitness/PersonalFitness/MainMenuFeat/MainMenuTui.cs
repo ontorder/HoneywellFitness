@@ -1,9 +1,12 @@
-﻿namespace HoneywellFitness.PersonalFitness.MainMenuFeat;
+﻿using HoneywellFitness.TuiThingy;
 
-public sealed class MainMenuTui(ConsoleWriter console)
+namespace HoneywellFitness.PersonalFitness.MainMenuFeat;
+
+public sealed class MainMenuTui(ConsoleWriter console, SystemServices system)
 {
     private readonly ConsoleWriter _console = console;
-    private int _selectedOption = 0;
+    private MenuOptions _selectedOption = MenuOptions.TodaysExercises;
+    private readonly SystemServices _system = system;
 
     public void Activate()
     {
@@ -22,38 +25,43 @@ public sealed class MainMenuTui(ConsoleWriter console)
 
             case { Meta: ConsoleKey.DownArrow }:
                 ClearCursor();
-                _selectedOption = (_selectedOption + 1) & 3;
+                _selectedOption = (MenuOptions)(((int)_selectedOption + 1) & 3);
                 PrintCursor();
                 break;
 
             case { Meta: ConsoleKey.UpArrow }:
                 ClearCursor();
-                _selectedOption = (_selectedOption - 1) & 3;
+                _selectedOption = (MenuOptions)(((int)_selectedOption - 1) & 3);
                 PrintCursor();
                 break;
 
             case { Meta: ConsoleKey.Enter }:
                 switch (_selectedOption)
                 {
-                    case 3:
-                        return false;
+                    case MenuOptions.Help: _system.NavigatorSwitchContext(TuiContext.Help); return true;
+                    case MenuOptions.EditExercises: _system.NavigatorSwitchContext(TuiContext.ExercisesDb); return true;
+                    case MenuOptions.TodaysExercises: _system.NavigatorSwitchContext(TuiContext.TodaysExercises); return true;
+                    case MenuOptions.Quit: return false;
                 }
                 break;
 
             case { Input: 't' or 'T' }:
-                _selectedOption = 0;
+                _selectedOption = MenuOptions.TodaysExercises;
+                _system.NavigatorSwitchContext(TuiContext.TodaysExercises);
                 break;
 
             case { Input: 'e' or 'E' }:
-                _selectedOption = 1;
+                _selectedOption = MenuOptions.EditExercises;
+                _system.NavigatorSwitchContext(TuiContext.ExercisesDb);
                 break;
 
             case { Input: 'h' or 'H' }:
-                _selectedOption = 2;
-                break;
+                _selectedOption = MenuOptions.Help;
+                _system.NavigatorSwitchContext(TuiContext.Help);
+                return true;
 
             case { Input: 'q' or 'Q' }:
-                _selectedOption = 3;
+                _selectedOption = MenuOptions.Quit;
                 return false;
         }
         return true;
@@ -61,7 +69,7 @@ public sealed class MainMenuTui(ConsoleWriter console)
 
     private void ClearCursor()
     {
-        _console.SetPos(30, 12 + _selectedOption);
+        _console.SetPos(30, 12 + (int)_selectedOption);
         Console.Write("  ");
     }
 
@@ -73,7 +81,7 @@ public sealed class MainMenuTui(ConsoleWriter console)
 
     private void PrintCursor()
     {
-        _console.SetPos(30, 12 + _selectedOption);
+        _console.SetPos(30, 12 + (int)_selectedOption);
         Console.Write("->");
     }
 
@@ -90,5 +98,13 @@ public sealed class MainMenuTui(ConsoleWriter console)
     private void Reset()
     {
         _selectedOption = 0;
+    }
+
+    private enum MenuOptions
+    {
+        TodaysExercises = 0,
+        EditExercises = 1,
+        Help = 2,
+        Quit = 3,
     }
 }

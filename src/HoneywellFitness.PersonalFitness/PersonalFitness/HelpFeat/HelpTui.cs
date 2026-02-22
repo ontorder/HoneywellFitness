@@ -1,8 +1,11 @@
-﻿namespace HoneywellFitness.PersonalFitness.HelpFeat;
+﻿using HoneywellFitness.TuiThingy;
 
-public sealed class HelpTui(ConsoleWriter cw)
+namespace HoneywellFitness.PersonalFitness.HelpFeat;
+
+public sealed class HelpTui(ConsoleWriter cw, SystemServices system)
 {
-    private readonly ConsoleWriter _cw = cw;
+    private readonly ConsoleWriter _console = cw;
+    private readonly SystemServices _system = system;
 
     public void Activate()
     {
@@ -17,7 +20,8 @@ public sealed class HelpTui(ConsoleWriter cw)
                 break;
 
             case { Meta: ConsoleKey.Escape }:
-                break;
+                _system.NavigatorSwitchContext(TuiContext.MainMenu);
+                return true;
         }
         return true;
     }
@@ -25,6 +29,7 @@ public sealed class HelpTui(ConsoleWriter cw)
     private void Print()
     {
         Console.Clear();
+        _console.SetPos(_console.MaxX / 2 - 10, 10);
         Console.Write("yeah buddy, light weight!");
     }
 }

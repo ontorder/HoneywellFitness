@@ -1,8 +1,12 @@
-﻿namespace HoneywellFitness.PersonalFitness.EditExerciseFeat;
+﻿using HoneywellFitness.TuiThingy;
 
-public sealed class EditExerciseTui(ConsoleWriter console)
+namespace HoneywellFitness.PersonalFitness.EditExerciseFeat;
+
+public sealed class EditExerciseTui(ConsoleWriter console, TuiThingy.SystemServices system, EditExercisesService editExercisesService)
 {
     private readonly ConsoleWriter _console = console;
+    private readonly EditExercisesService _editExercisesService = editExercisesService;
+    private readonly SystemServices _system = system;
 
     public void Activate()
     {
@@ -37,5 +41,9 @@ public sealed class EditExerciseTui(ConsoleWriter console)
     private void Submit()
     {
         //var upd = new UpdateExercise(name, default, default, weightKg);
+
+        //float maxWeightKg = float.TryParse(maxWeightKgString, System.Globalization.CultureInfo.InvariantCulture, out maxWeightKg);
+        //var add = new CreateExercise(name, muscleGroup, reps: null, maxWeightKg);
+        // UNDONE
     }
 }

@@ -1,8 +1,6 @@
-﻿using HoneywellFitness.PersonalFitness.Model;
+﻿namespace HoneywellFitness.PersonalFitness.Model;
 
-namespace HoneywellFitness.PersonalFitness;
-
-public sealed class TimeBasedRepetition : IRepetitions
+public sealed class TimeBasedRepetition(TimeSpan duration) : IRepetitions
 {
-    public required TimeSpan Duration;
+    public readonly TimeSpan Duration = duration;
 }

@@ -1,6 +1,4 @@
-﻿using HoneywellFitness.PersonalFitness.Model;
-
-namespace HoneywellFitness.PersonalFitness;
+﻿namespace HoneywellFitness.PersonalFitness.Model;
 
 public sealed class LoadAndVolumeRepetitions(int loadReps,
     int loadSets,
