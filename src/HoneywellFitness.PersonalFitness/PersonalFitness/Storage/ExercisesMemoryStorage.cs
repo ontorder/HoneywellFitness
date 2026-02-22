@@ -1,6 +1,4 @@
-﻿using HoneywellFitness.PersonalFitness.AddExerciseFeat;
-using HoneywellFitness.PersonalFitness.EditExerciseFeat;
-using HoneywellFitness.PersonalFitness.Model;
+﻿using HoneywellFitness.PersonalFitness.Model;
 
 namespace HoneywellFitness.PersonalFitness.Storage;
 
@@ -14,10 +12,11 @@ public sealed class ExercisesMemoryStorage
             _autoincId++,
             newExercise.ExerciseName,
             importance: default,
-            newExercise.MuscleGroup,
-            default,
+            muscleGroup: newExercise.MuscleGroup,
+            repetitionsMode: default,
             newExercise.Reps,
-            false));
+            newExercise.TrainOnDay,
+            wasLastExerciseFinished: false));
 
     public Exercise[] GetExercises()
         => [.. _exercises];

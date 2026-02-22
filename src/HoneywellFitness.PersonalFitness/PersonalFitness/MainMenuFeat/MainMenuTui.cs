@@ -36,11 +36,11 @@ public sealed class MainMenuTui(ConsoleWriter console)
                 switch (_selectedOption)
                 {
                     case 3:
-                        return true;
+                        return false;
                 }
                 break;
 
-            case { Input: 'a' or 'A' }:
+            case { Input: 't' or 'T' }:
                 _selectedOption = 0;
                 break;
 
@@ -48,13 +48,13 @@ public sealed class MainMenuTui(ConsoleWriter console)
                 _selectedOption = 1;
                 break;
 
+            case { Input: 'h' or 'H' }:
+                _selectedOption = 2;
+                break;
+
             case { Input: 'q' or 'Q' }:
                 _selectedOption = 3;
                 return false;
-
-            case { Input: 'v' or 'V' }:
-                _selectedOption = 2;
-                break;
         }
         return true;
     }
@@ -80,11 +80,11 @@ public sealed class MainMenuTui(ConsoleWriter console)
     private void Print()
     {
         Console.Clear();
-        _console.SetPos(30, 10); Console.WriteLine("== Honeywell Fitness Tracker ==");
-        _console.SetPos(30, 12); Console.WriteLine("   [A]dd New Exercise");
-        _console.SetPos(30, 13); Console.WriteLine("   [E]dit a Exercise");
-        _console.SetPos(30, 14); Console.WriteLine("   [V]iew Exercises in Database");
-        _console.SetPos(30, 15); Console.WriteLine("   [Q]uit Application");
+        _console.SetPos(30, 10); Console.Write("== Honeywell Fitness Tracker ==");
+        _console.SetPos(30, 12); Console.Write("   [T]oday's exercises");
+        _console.SetPos(30, 13); Console.Write("   [E]dit exercises");
+        _console.SetPos(30, 14); Console.Write("   [H]elp");
+        _console.SetPos(30, 15); Console.Write("   [Q]uit Application");
     }
 
     private void Reset()

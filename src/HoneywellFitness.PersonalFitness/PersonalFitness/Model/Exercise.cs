@@ -7,6 +7,7 @@ public sealed class Exercise(
     string muscleGroup,
     RepetitionsMode repetitionsMode,
     IRepetitions reps,
+    TrainingDay trainOnDay,
     bool wasLastExerciseFinished)
 {
     public int ExerciseId = exerciseId;
@@ -15,5 +16,6 @@ public sealed class Exercise(
     public string MuscleGroup = muscleGroup;
     public RepetitionsMode RepetitionsMode = repetitionsMode;
     public IRepetitions Reps = reps;
+    public TrainingDay TrainOnDay = trainOnDay;
     public bool WasLastExerciseFinished = wasLastExerciseFinished;
 }

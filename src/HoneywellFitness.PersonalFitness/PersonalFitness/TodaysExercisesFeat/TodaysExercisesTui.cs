@@ -1,7 +1,9 @@
-﻿namespace HoneywellFitness.PersonalFitness.AddExerciseFeat;
+﻿namespace HoneywellFitness.PersonalFitness.TodaysExercisesFeat;
 
-public sealed class AddExerciseTui
+public sealed class TodaysExercisesTui(ConsoleWriter cw)
 {
+    private readonly ConsoleWriter _cw = cw;
+
     public void Activate()
     {
         Print();
@@ -9,7 +11,6 @@ public sealed class AddExerciseTui
 
     private void Confirm()
     {
-
         //float maxWeightKg = float.TryParse(maxWeightKgString, System.Globalization.CultureInfo.InvariantCulture, out maxWeightKg);
         //var add = new CreateExercise(name, muscleGroup, reps: null, maxWeightKg);
         // UNDONE
@@ -20,6 +21,5 @@ public sealed class AddExerciseTui
         Console.Write("Name: ");
         Console.Write("Muscle group: ");
         Console.Write("Weight (kg): ");
-
     }
 }

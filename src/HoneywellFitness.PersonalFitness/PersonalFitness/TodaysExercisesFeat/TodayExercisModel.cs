@@ -1,8 +1,8 @@
 ﻿using HoneywellFitness.PersonalFitness.Model;
 
-namespace HoneywellFitness.PersonalFitness.EditExerciseFeat;
+namespace HoneywellFitness.PersonalFitness.TodaysExercisesFeat;
 
-public sealed class UpdateExercise(string exerciseName, string muscleGroup, IRepetitions reps, float weightKg)
+public sealed class TodayExercisModel(string exerciseName, string muscleGroup, IRepetitions reps, float weightKg)
 {
     public string ExerciseName = exerciseName;
     public string MuscleGroup = muscleGroup;
